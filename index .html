@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>ComicCraft AI</title>
+
+<style>
+
+body {
+    font-family: Arial;
+    background: #eaf2ff;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #123c78;
+}
+
+textarea {
+    width: 80%;
+    height: 100px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #4472c4;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #1976d2;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+.panel {
+    display: inline-block;
+    width: 40%;
+    min-height: 250px;
+    margin: 10px;
+    padding: 20px;
+    background: white;
+    border: 3px solid #4472c4;
+    border-radius: 12px;
+    vertical-align: top;
+}
+
+.panel h3 {
+    color: #123c78;
+}
+
+.comic {
+    font-size: 70px;
+    padding: 30px;
+    border-radius: 12px;
+    margin: 10px 0;
+}
+
+#downloadBtn {
+    background: #e53935;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🤖 ComicCraft AI</h1>
+
+<h2>Enter Your Story</h2>
+
+<textarea id="story">A student discovers a magical AI robot that helps create a comic story.</textarea>
+
+<br>
+
+<button onclick="GenerateComic()">
+✨ Generate Comic
+</button>
+
+<div id="result"></div>
+
+<button id="downloadBtn" onclick="downloadComic()">
+⬇ Download Comic
+</button>
+
+
+<script>
+
+function GenerateComic() {
+
+    let story = document.getElementById("story").value;
+
+    if (story.trim() === "") {
+        alert("Please enter a story!");
+        return;
+    }
+
+    document.getElementById("result").innerHTML = `
+
+    <h2>🎉 Your AI Comic is Ready!</h2>
+
+    <div class="panel">
+
+        <h3>Panel 1 – Beginning</h3>
+
+        <div class="comic" style="background:#dbeafe;">
+            👩‍🎓 📚
+        </div>
+
+        <p>
+        A student is sitting at a desk and struggling
+        to create a new comic story.
+        </p>
+
+        <b>💬 "I don't know how to start!"</b>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h3>Panel 2 – Discovery</h3>
+
+        <div class="comic" style="background:#dcfce7;">
+            🤖 ✨ 🔍
+        </div>
+
+        <p>
+        A magical AI robot suddenly appears
+        and offers to help the student.
+        </p>
+
+        <b>💬 "I can help you create a comic!"</b>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h3>Panel 3 – Adventure</h3>
+
+        <div class="comic" style="background:#fef3c7;">
+            🚀 🌟 🐉
+        </div>
+
+        <p>
+        The student and the AI robot create
+        an exciting magical adventure.
+        </p>
+
+        <b>💬 "Wow! Our story is coming alive!"</b>
+
+    </div>
+
+
+    <div class="panel">
+
+        <h3>Panel 4 – Ending</h3>
+
+        <div class="comic" style="background:#fee2e2;">
+            📖 🎉 🤖
+        </div>
+
+        <p>
+        The student finishes a colorful comic
+        with the help of the AI robot.
+        </p>
+
+        <b>💬 "We created an amazing comic!"</b>
+
+    </div>
+
+    `;
+
+}
+
+
+function downloadComic() {
+
+    let story =
+        document.getElementById("story").value;
+
+    let text =
+        "COMICCRAFT AI\n\n" +
+        "Story:\n" +
+        story +
+        "\n\n" +
+        "Panel 1: Beginning\n" +
+        "Student starts creating a comic.\n\n" +
+        "Panel 2: Discovery\n" +
+        "Student discovers an AI robot.\n\n" +
+        "Panel 3: Adventure\n" +
+        "Student and AI create an adventure.\n\n" +
+        "Panel 4: Ending\n" +
+        "Student completes the comic.";
+
+    let file = new Blob(
+        [text],
+        {type:"text/plain"}
+    );
+
+    let link = document.createElement("a");
+
+    link.href =
+        URL.createObjectURL(file);
+
+    link.download =
+        "ComicCraft-AI.txt";
+
+    link.click();
+
+}
+
+</script>
+
+</body>
+</html>
